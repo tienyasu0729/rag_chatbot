@@ -1,0 +1,34 @@
+services:
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: rag-chatbot-qdrant
+    restart: unless-stopped
+    volumes:
+      - qdrant_data:/qdrant/storage
+
+  app:
+    image: vnam1401/rag-chatbot-app:latest
+    container_name: rag-chatbot-app
+    restart: unless-stopped
+    env_file:
+      - ./deploy/env/app.vps.env
+    environment:
+      TZ: Asia/Saigon
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      default: {}
+      app-shared:
+        aliases:
+          - rag-chatbot-app
+    depends_on:
+      - qdrant
+    ports:
+      - "127.0.0.1:8000:8000"
+
+volumes:
+  qdrant_data:
+
+networks:
+  app-shared:
+    external: true

@@ -1,0 +1,32 @@
+﻿{
+  "requestId": "mgr_test_001",
+  "requestedBy": {
+    "userId": 1,
+    "username": "manager",
+    "role": "MANAGER",
+    "branchId": 3
+  },
+  "vehicleInput": {
+    "title": "Toyota Vios G 1.5 CVT 2021",
+    "categoryId": 1,
+    "subcategoryId": 101,
+    "year": 2021,
+    "mileage": 80000,
+    "fuel": "Xang",
+    "transmission": "So tu dong",
+    "bodyStyle": "Sedan",
+    "origin": "Trong nuoc",
+    "description": "test"
+  },
+  "imageAssets": [
+    {
+      "url": "https://res.cloudinary.com/demo/image/upload/vehicle-pricing/front_001.jpg",
+      "publicId": "vehicle-pricing/front_001",
+      "source": "cloudinary",
+      "declaredGroup": "front",
+      "caption": "Anh dau xe",
+      "captionBy": "manager",
+      "captionType": "user_note"
+    }
+  ]
+}
