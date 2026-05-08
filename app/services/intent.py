@@ -25,7 +25,11 @@ _OTHER_KEYWORDS = re.compile(
 )
 _RECOMMEND_KEYWORDS = re.compile(
     r"tư vấn|gợi ý|giúp.{0,10}chọn xe|nên mua|xe nào.{0,15}(phù hợp|tốt|hợp)"
-    r"|muốn mua xe|tìm xe|chọn xe|recommend",
+    r"|muốn mua xe|tìm xe|chọn xe|recommend"
+    r"|có xe (nào|không).{0,30}(phù hợp|dưới|trên|tầm|khoảng)"
+    r"|xe.{0,10}(gia đình|cá nhân|đi làm|dưới \d|tầm \d)"
+    r"|\d\s*(chỗ|người).{0,20}(dưới|khoảng|tầm)"
+    r"|(dưới|khoảng|tầm).{0,15}(tỷ|triệu).{0,20}(xe|mua|chọn)",
     re.IGNORECASE,
 )
 

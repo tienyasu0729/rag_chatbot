@@ -39,6 +39,10 @@ def _build_filter(preferences: dict | None) -> Filter:
         if transmission:
             must.append(FieldCondition(key="transmission", match=MatchValue(value=transmission)))
 
+        so_cho = preferences.get("so_cho")
+        if so_cho:
+            must.append(FieldCondition(key="so_cho", match=MatchValue(value=int(so_cho))))
+
     return Filter(must=must)
 
 
