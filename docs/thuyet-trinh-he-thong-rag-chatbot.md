@@ -106,8 +106,8 @@ Lưu ý: hệ thống lấy model theo biến môi trường, nên có thể tha
 
 ## 6.1 Giai đoạn Embedding (RAG indexing + query embedding)
 
-- **Provider local** (mặc định): `BAAI/bge-m3`
-- **Provider openai-compatible**: `text-embedding-3-small` hoặc `text-embedding-3-large`
+- **Provider**: `openai` — model `text-embedding-3-small` (hoặc `text-embedding-3-large`)
+- Cấu hình qua `EMBEDDING_MODEL` và `EMBEDDING_API_KEY` trong `.env`
 
 ## 6.2 Giai đoạn LLM cho Chatbot
 
@@ -192,7 +192,7 @@ Nếu lỗi thì fallback công thức, không phụ thuộc model.
 ## 10) Bộ câu hỏi phản biện và trả lời ngắn
 
 1. **Hệ thống dùng model nào?**  
-   -> Theo env: embedding (`BAAI/bge-m3` hoặc `text-embedding-3-*`), LLM (`LLM_MODEL`), vision (`VISION_MODEL`).
+   -> Theo env: embedding (`text-embedding-3-small` hoặc `text-embedding-3-large`), LLM (`LLM_MODEL`), vision (`VISION_MODEL`).
 
 2. **Nếu Qdrant hoặc Vision bị lỗi thì sao?**  
    -> Hệ thống chạy degraded/fallback, vẫn trả response có kiểm soát.

@@ -114,7 +114,6 @@ async def lifespan(app: FastAPI):
         None,
         embedding_service.load_model,
         settings.EMBEDDING_MODEL,
-        settings.EMBEDDING_DEVICE,
     )
 
     # 2. Init Qdrant collection

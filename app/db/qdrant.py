@@ -45,18 +45,9 @@ def raise_qdrant_unavailable(action: str, exc: Exception) -> None:
 
 
 def resolve_embedding_dimension() -> int:
-    """Suy ra vector dimension từ embedding provider/model hiện tại."""
+    """Suy ra vector dimension từ embedding model hiện tại (OpenAI-compatible)."""
     settings = get_settings()
-    provider = settings.EMBEDDING_PROVIDER.strip().lower() or "local"
     model_name = settings.EMBEDDING_MODEL.strip()
-
-    if provider == "local":
-        return 1024
-
-    if provider != "openai":
-        raise RuntimeError(
-            f"Unsupported EMBEDDING_PROVIDER='{settings.EMBEDDING_PROVIDER}'"
-        )
 
     if model_name == "text-embedding-3-small":
         return 1536
@@ -64,7 +55,7 @@ def resolve_embedding_dimension() -> int:
         return 3072
 
     raise RuntimeError(
-        f"Unsupported OpenAI embedding model '{model_name}'. "
+        f"Unsupported embedding model '{model_name}'. "
         "Hãy bổ sung mapping dimension trước khi khởi tạo Qdrant collection."
     )
 

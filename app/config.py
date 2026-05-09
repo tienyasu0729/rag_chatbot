@@ -47,12 +47,11 @@ class Settings(BaseSettings):
     CLOUDINARY_API_SECRET: str = ""
 
     # --- Embedding ---
-    EMBEDDING_PROVIDER: str = "local"   # local | openai
-    EMBEDDING_MODEL: str = "BAAI/bge-m3"
-    EMBEDDING_DEVICE: str = "auto"
+    EMBEDDING_PROVIDER: str = "openai"
+    EMBEDDING_MODEL: str = "text-embedding-3-small"
     EMBEDDING_BASE_URL: str = ""
     EMBEDDING_API_KEY: str = ""
-    EMBEDDING_BATCH_SIZE: int = 4
+    EMBEDDING_BATCH_SIZE: int = 32
 
     # --- Redis ---
     REDIS_HOST: str = "localhost"
