@@ -1,13 +1,11 @@
 
-name: Deploy RAG
+name: Deploy RAG Chatbot
 
 on:
 
   push:
 
-    branches:
-
-      - main
+    branches: [main]
 
 jobs:
 
@@ -17,9 +15,7 @@ jobs:
 
     steps:
 
-      - name: Deploy rag
-
-        uses: appleboy/ssh-action@master
+      - uses: appleboy/ssh-action@v1.0.3
 
         with:
 
@@ -31,17 +27,9 @@ jobs:
 
           port: ${{ secrets.PORT }}
 
+          command_timeout: 10m
+
           script: |
 
-            export PATH=$PATH:/root/.nvm/versions/node/v24.15.0/bin
-
-            cd /var/www/rag_chatbot
-
-            git reset --hard
-
-            git pull origin main
-
-            npm install
-
-            pm2 reload rag-chatbot || pm2 start npm --name rag-chatbot -- start
+            cd /opt/rag-chatbot/app && git reset --hard && git pull origin main && source /opt/rag-chatbot/venv/bin/activate && pip install -r requirements.txt --quiet && systemctl restart rag-chatbot
 
